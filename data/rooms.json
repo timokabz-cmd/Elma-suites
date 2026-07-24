@@ -1,1 +1,70 @@
-
+[
+  {
+    "id": "1",
+    "number": "1",
+    "name": "Standard Single",
+    "price_per_night": 80000,
+    "currency": "UGX",
+    "max_guests": 1,
+    "description": "A cozy single room with a comfortable bed, private bathroom, and free Wi-Fi. Perfect for solo travelers.",
+    "photos": [
+      "images/room_1/1.jpg",
+      "images/room_1/2.jpg",
+      "images/room_1/3.jpg",
+      "images/room_1/4.jpg",
+      "images/room_1/5.jpg"
+    ],
+    "status": "available"
+  },
+  {
+    "id": "2",
+    "number": "2",
+    "name": "Deluxe Double",
+    "price_per_night": 130000,
+    "currency": "UGX",
+    "max_guests": 2,
+    "description": "A spacious double room with a king-size bed, en-suite bathroom, and a small sitting area.",
+    "photos": [
+      "images/room_2/1.jpg",
+      "images/room_2/2.jpg",
+      "images/room_2/3.jpg",
+      "images/room_2/4.jpg",
+      "images/room_2/5.jpg"
+    ],
+    "status": "booked"
+  },
+  {
+    "id": "3",
+    "number": "3",
+    "name": "Executive Suite",
+    "price_per_night": 220000,
+    "currency": "UGX",
+    "max_guests": 2,
+    "description": "Our top suite with a separate lounge, work desk, and premium bathroom fittings. Ideal for business travelers.",
+    "photos": [
+      "images/room_3/1.jpg",
+      "images/room_3/2.jpg",
+      "images/room_3/3.jpg",
+      "images/room_3/4.jpg",
+      "images/room_3/5.jpg"
+    ],
+    "status": "available"
+  },
+  {
+    "id": "4",
+    "number": "4",
+    "name": "Family Room",
+    "price_per_night": 180000,
+    "currency": "UGX",
+    "max_guests": 4,
+    "description": "Two double beds and extra space, great for families or small groups traveling together.",
+    "photos": [
+      "images/room_4/1.jpg",
+      "images/room_4/2.jpg",
+      "images/room_4/3.jpg",
+      "images/room_4/4.jpg",
+      "images/room_4/5.jpg"
+    ],
+    "status": "available"
+  }
+]
