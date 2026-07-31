@@ -12,13 +12,101 @@
   },
   {
     "id": "b2",
+    "name": "Bell Lager (500ml)",
+    "category": "Beer",
+    "price": 7500,
+    "currency": "UGX",
+    "photo": "images/bar/b2.jpg",
+    "prep_time_minutes": 2,
+    "available": true,
+    "description": "Classic Ugandan lager."
+  },
+  {
+    "id": "b3",
+    "name": "Guinness Uganda (500ml)",
+    "category": "Beer",
+    "price": 9000,
+    "currency": "UGX",
+    "photo": "images/bar/b3.jpg",
+    "prep_time_minutes": 2,
+    "available": true,
+    "description": "Smooth Ugandan-brewed stout."
+  },
+  {
+    "id": "b4",
     "name": "Passion Mojito",
     "category": "Cocktails",
     "price": 15000,
     "currency": "UGX",
-    "photo": "images/bar/b2.jpg",
+    "photo": "images/bar/b4.jpg",
     "prep_time_minutes": 6,
     "available": true,
-    "description": "Fresh passion fruit, mint, rum."
+    "description": "Fresh passion fruit, mint, white rum."
+  },
+  {
+    "id": "b5",
+    "name": "Dark & Stormy",
+    "category": "Cocktails",
+    "price": 16000,
+    "currency": "UGX",
+    "photo": "images/bar/b5.jpg",
+    "prep_time_minutes": 5,
+    "available": true,
+    "description": "Waragi-style dark rum, ginger beer, lime."
+  },
+  {
+    "id": "b6",
+    "name": "Uganda Waragi (Single)",
+    "category": "Spirits",
+    "price": 6000,
+    "currency": "UGX",
+    "photo": "images/bar/b6.jpg",
+    "prep_time_minutes": 2,
+    "available": true,
+    "description": "Uganda's own gin, served neat or with a mixer."
+  },
+  {
+    "id": "b7",
+    "name": "Fresh Passion Juice",
+    "category": "Non-Alcoholic",
+    "price": 8000,
+    "currency": "UGX",
+    "photo": "images/bar/b7.jpg",
+    "prep_time_minutes": 5,
+    "available": true,
+    "description": "Freshly blended passion fruit juice."
+  },
+  {
+    "id": "b8",
+    "name": "Stoney Tangawizi",
+    "category": "Non-Alcoholic",
+    "price": 4000,
+    "currency": "UGX",
+    "photo": "images/bar/b8.jpg",
+    "prep_time_minutes": 1,
+    "available": true,
+    "description": "Ginger soda, chilled."
+  },
+  {
+    "id": "b9",
+    "name": "Mixed Nuts",
+    "category": "Bar Snacks",
+    "price": 5000,
+    "currency": "UGX",
+    "photo": "images/bar/b9.jpg",
+    "prep_time_minutes": 2,
+    "available": true,
+    "description": "Roasted groundnuts and cashews."
+  },
+  {
+    "id": "b10",
+    "name": "Muchomo Skewers (3pc)",
+    "category": "Bar Snacks",
+    "price": 12000,
+    "currency": "UGX",
+    "photo": "images/bar/b10.jpg",
+    "prep_time_minutes": 15,
+    "available": true,
+    "description": "Grilled beef skewers with pili pili sauce."
   }
 ]
