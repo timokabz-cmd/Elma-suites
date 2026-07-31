@@ -1,0 +1,103 @@
+st.markdown("""
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:wght@500;600;700&family=Inter:wght@400;500;600&display=swap');
+
+:root {
+    --brick: #B5542C;
+    --brick-dark: #2B1D14;
+    --cream: #F7EFE4;
+    --palm: #5C7A5E;
+    --brass: #D4A24C;
+}
+
+html, body, [class*="css"] { font-family: 'Inter', sans-serif; }
+
+.stApp {
+    background: linear-gradient(180deg, var(--cream) 0%, #EFE4D3 100%);
+}
+
+h1, h2, h3 {
+    font-family: 'Fraunces', serif !important;
+    color: var(--brick-dark) !important;
+    letter-spacing: -0.01em;
+}
+
+h1 {
+    position: relative;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1.25rem !important;
+}
+h1::after {
+    content: "";
+    position: absolute;
+    left: 0; bottom: 0;
+    width: 64px; height: 3px;
+    background: var(--brass);
+    border-radius: 2px;
+}
+
+/* Section cards on home */
+div[data-testid="stButton"] > button {
+    background: var(--brick-dark);
+    color: var(--cream);
+    border: none;
+    border-radius: 10px;
+    padding: 0.9rem 1rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    transition: transform 0.15s ease, background 0.15s ease;
+}
+div[data-testid="stButton"] > button:hover {
+    background: var(--brick);
+    transform: translateY(-1px);
+}
+div[data-testid="stButton"] > button:focus-visible {
+    outline: 3px solid var(--brass);
+    outline-offset: 2px;
+}
+
+/* Menu / room item containers -> receipt-tab feel */
+div[data-testid="stVerticalBlockBorderWrapper"] {
+    background: #FFFFFF;
+    border: 1px solid #E6D9C4 !important;
+    border-radius: 12px;
+    box-shadow: 0 2px 10px rgba(43, 29, 20, 0.06);
+}
+
+/* Availability badges via markdown-emitted text stay readable */
+.stCaption, small { color: #7A6A57 !important; }
+
+/* Price emphasis */
+div[data-testid="stMarkdownContainer"] p strong {
+    color: var(--palm);
+}
+
+/* Sidebar */
+section[data-testid="stSidebar"] {
+    background: var(--brick-dark);
+}
+section[data-testid="stSidebar"] * {
+    color: var(--cream) !important;
+}
+section[data-testid="stSidebar"] div[data-testid="stButton"] > button {
+    background: transparent;
+    border: 1px solid rgba(247,239,228,0.3);
+}
+section[data-testid="stSidebar"] div[data-testid="stButton"] > button:hover {
+    background: rgba(212,162,76,0.15);
+    border-color: var(--brass);
+}
+
+/* Hero image gets rounded corners + subtle shadow */
+div[data-testid="stImage"] img {
+    border-radius: 14px;
+}
+
+/* Divider styled as brass rule */
+hr {
+    border: none;
+    height: 2px;
+    background: linear-gradient(90deg, var(--brass), transparent);
+}
+</style>
+""", unsafe_allow_html=True)
