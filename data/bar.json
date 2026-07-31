@@ -1,0 +1,24 @@
+[
+  {
+    "id": "b1",
+    "name": "Nile Special (500ml)",
+    "category": "Beer",
+    "price": 8000,
+    "currency": "UGX",
+    "photo": "images/bar/b1.jpg",
+    "prep_time_minutes": 2,
+    "available": true,
+    "description": "Chilled local lager."
+  },
+  {
+    "id": "b2",
+    "name": "Passion Mojito",
+    "category": "Cocktails",
+    "price": 15000,
+    "currency": "UGX",
+    "photo": "images/bar/b2.jpg",
+    "prep_time_minutes": 6,
+    "available": true,
+    "description": "Fresh passion fruit, mint, rum."
+  }
+]
