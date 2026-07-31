@@ -1,0 +1,24 @@
+[
+  {
+    "id": "r1",
+    "name": "Grilled Tilapia & Chips",
+    "category": "Mains",
+    "price": 25000,
+    "currency": "UGX",
+    "photo": "images/restaurant/r1.jpg",
+    "prep_time_minutes": 25,
+    "available": true,
+    "description": "Whole tilapia, chips, kachumbari."
+  },
+  {
+    "id": "r2",
+    "name": "Chicken Pilau",
+    "category": "Mains",
+    "price": 18000,
+    "currency": "UGX",
+    "photo": "images/restaurant/r2.jpg",
+    "prep_time_minutes": 20,
+    "available": true,
+    "description": "Spiced rice with chicken."
+  }
+]
