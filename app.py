@@ -18,7 +18,177 @@ ROOMS_FILE = "data/rooms.json"
 BAR_FILE = "data/bar.json"
 RESTAURANT_FILE = "data/restaurant.json"
 
+CATEGORY_BANNERS = {
+    "Spirits": "images/bar/category_spirits.jpg",
+    "Cocktails": "images/bar/category_cocktails.jpg",
+}
+
 st.set_page_config(page_title=BUSINESS_NAME, page_icon="🏨", layout="wide")
+
+# ---------- styling ----------
+st.markdown("""
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:wght@500;600;700&family=Inter:wght@400;500;600&display=swap');
+
+:root {
+    --brick: #B5542C;
+    --brick-dark: #2B1D14;
+    --cream: #F7EFE4;
+    --palm: #5C7A5E;
+    --brass: #D4A24C;
+}
+
+html, body, [class*="css"] { font-family: 'Inter', sans-serif; }
+
+.stApp {
+    background: linear-gradient(180deg, var(--cream) 0%, #EFE4D3 100%);
+}
+
+h1, h2, h3 {
+    font-family: 'Fraunces', serif !important;
+    color: var(--brick-dark) !important;
+    letter-spacing: -0.01em;
+}
+
+h1 {
+    position: relative;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1.25rem !important;
+}
+h1::after {
+    content: "";
+    position: absolute;
+    left: 0; bottom: 0;
+    width: 64px; height: 3px;
+    background: var(--brass);
+    border-radius: 2px;
+}
+
+/* Buttons */
+div[data-testid="stButton"] > button {
+    background: var(--brick-dark);
+    color: var(--cream);
+    border: none;
+    border-radius: 10px;
+    padding: 0.9rem 1rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    transition: transform 0.15s ease, background 0.15s ease;
+}
+div[data-testid="stButton"] > button:hover {
+    background: var(--brick);
+    transform: translateY(-1px);
+}
+div[data-testid="stButton"] > button:focus-visible {
+    outline: 3px solid var(--brass);
+    outline-offset: 2px;
+}
+
+/* link_button (WhatsApp checkout CTA) matches primary buttons */
+a[data-testid="stBaseLinkButton-secondary"], a[data-testid="stBaseLinkButton-primary"] {
+    background: var(--palm) !important;
+    color: var(--cream) !important;
+    border: none !important;
+    border-radius: 10px !important;
+    font-weight: 600 !important;
+    letter-spacing: 0.02em;
+    transition: transform 0.15s ease, background 0.15s ease;
+}
+a[data-testid="stBaseLinkButton-secondary"]:hover, a[data-testid="stBaseLinkButton-primary"]:hover {
+    background: #4A6650 !important;
+    transform: translateY(-1px);
+}
+
+/* Menu / room item containers -> receipt-tab feel */
+div[data-testid="stVerticalBlockBorderWrapper"] {
+    background: #FFFFFF;
+    border: 1px solid #E6D9C4 !important;
+    border-radius: 12px;
+    box-shadow: 0 2px 10px rgba(43, 29, 20, 0.06);
+}
+
+/* Availability badges / captions stay readable */
+.stCaption, small { color: #7A6A57 !important; }
+
+/* Price + total emphasis */
+div[data-testid="stMarkdownContainer"] p strong {
+    color: var(--palm);
+}
+
+/* Sidebar */
+section[data-testid="stSidebar"] {
+    background: var(--brick-dark);
+}
+section[data-testid="stSidebar"] * {
+    color: var(--cream) !important;
+}
+section[data-testid="stSidebar"] div[data-testid="stButton"] > button {
+    background: transparent;
+    border: 1px solid rgba(247,239,228,0.3);
+}
+section[data-testid="stSidebar"] div[data-testid="stButton"] > button:hover {
+    background: rgba(212,162,76,0.15);
+    border-color: var(--brass);
+}
+
+/* Hero image gets rounded corners + subtle shadow */
+div[data-testid="stImage"] img {
+    border-radius: 14px;
+}
+
+/* Divider styled as brass rule */
+hr {
+    border: none;
+    height: 2px;
+    background: linear-gradient(90deg, var(--brass), transparent);
+}
+
+/* Hero welcome block (used in show_home) */
+.vennie-hero-kicker {
+    font-family: 'Inter', sans-serif;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--palm);
+    font-size: 0.75rem;
+    font-weight: 600;
+    margin-bottom: 0.3rem;
+}
+.vennie-hero-title {
+    font-family: 'Fraunces', serif;
+    color: var(--brick-dark);
+    margin-bottom: 0.2rem;
+}
+.vennie-hero-sub {
+    color: #7A6A57;
+    font-size: 1rem;
+}
+
+/* Service-option radio -> pill chips */
+div[data-testid="stRadio"] > div {
+    gap: 0.5rem;
+}
+div[data-testid="stRadio"] label {
+    background: #FFFFFF;
+    border: 1px solid #E6D9C4;
+    border-radius: 999px;
+    padding: 0.5rem 1rem;
+    transition: all 0.15s ease;
+}
+div[data-testid="stRadio"] label:hover {
+    border-color: var(--brass);
+}
+div[data-testid="stRadio"] label:has(input:checked) {
+    background: var(--brick-dark);
+    border-color: var(--brick-dark);
+}
+
+/* Mobile tightening */
+@media (max-width: 480px) {
+    h1 { font-size: 1.6rem !important; }
+    div[data-testid="stButton"] > button { padding: 0.75rem 0.85rem; font-size: 0.92rem; }
+}
+</style>
+""", unsafe_allow_html=True)
 
 # ---------- data helpers ----------
 def load_json(path):
@@ -131,8 +301,13 @@ def go_home():
 def show_home():
     if os.path.exists(HERO_IMAGE):
         st.image(HERO_IMAGE, use_container_width=True)
-    st.title(f"👋 Welcome to {BUSINESS_NAME}")
-    st.caption("Choose a section to get started.")
+    st.markdown(f"""
+        <div style="text-align:center; padding: 0.5rem 0 1.5rem;">
+            <p class="vennie-hero-kicker">Kampala</p>
+            <h1 class="vennie-hero-title">{BUSINESS_NAME}</h1>
+            <p class="vennie-hero-sub">Rooms, bar & restaurant — one tap away.</p>
+        </div>
+    """, unsafe_allow_html=True)
     c1, c2, c3 = st.columns(3)
     with c1:
         if st.button("🛏️ Rooms", use_container_width=True):
@@ -216,6 +391,9 @@ def show_menu_list(items, section, label, icon):
         go_home(); st.rerun()
     categories = sorted(set(i.get("category", "Other") for i in items))
     for cat in categories:
+        banner = CATEGORY_BANNERS.get(cat)
+        if banner and os.path.exists(banner):
+            st.image(banner, use_container_width=True)
         st.subheader(cat)
         cat_items = [i for i in items if i.get("category", "Other") == cat]
         cols = st.columns(2)
@@ -240,41 +418,86 @@ def show_menu_list(items, section, label, icon):
 
 # ---------- CART / CHECKOUT ----------
 def show_cart():
-    st.title("🛒 Your order")
+    st.markdown(f"""
+        <div style="text-align:center; padding: 0.5rem 0 1rem;">
+            <p class="vennie-hero-kicker">Your Order</p>
+            <h1 class="vennie-hero-title" style="display:inline-block;">{BUSINESS_NAME}</h1>
+        </div>
+    """, unsafe_allow_html=True)
+
     if st.button("← Continue browsing"):
         go_home(); st.rerun()
+
     if not st.session_state.cart:
-        st.info("Your cart is empty.")
+        st.markdown("""
+            <div style="text-align:center; padding: 2rem 1rem; color:#7A6A57;">
+                <p style="font-family:'Fraunces', serif; font-size:1.1rem; color:#2B1D14;">Your tab is empty</p>
+                <p>Head back and add a drink or a dish to get started.</p>
+            </div>
+        """, unsafe_allow_html=True)
         return
+
+    st.markdown("""
+        <div style="background:#FFFFFF; border:1px solid #E6D9C4; border-radius:14px;
+                    padding:1.25rem 1.25rem 0.5rem; box-shadow:0 2px 10px rgba(43,29,20,0.06);
+                    font-family:'Inter', sans-serif;">
+    """, unsafe_allow_html=True)
+
     remove_idx = None
     for idx, line in enumerate(st.session_state.cart):
-        c1, c2, c3, c4 = st.columns([3, 1, 1, 1])
+        c1, c2, c3, c4 = st.columns([3, 1, 1.2, 0.6])
         with c1:
-            st.write(f"{line['name']} ({line['section']})")
+            st.markdown(f"**{line['name']}**  \n<span style='color:#7A6A57; font-size:0.85rem;'>{line['section'].title()}</span>", unsafe_allow_html=True)
         with c2:
             line["qty"] = st.number_input("Qty", min_value=1, value=line["qty"],
                                            key=f"qty_{idx}", label_visibility="collapsed")
         with c3:
-            st.write(f"{line['currency']} {line['price']*line['qty']:,}")
+            st.markdown(f"<div style='padding-top:0.6rem; color:#5C7A5E; font-weight:600;'>{line['currency']} {line['price']*line['qty']:,}</div>", unsafe_allow_html=True)
         with c4:
             if st.button("✕", key=f"rm_{idx}"):
                 remove_idx = idx
+        st.markdown("<hr style='margin:0.4rem 0; background:#EFE4D3; height:1px;'>", unsafe_allow_html=True)
+
+    st.markdown("</div>", unsafe_allow_html=True)
+
     if remove_idx is not None:
         st.session_state.cart.pop(remove_idx)
         st.rerun()
-    st.divider()
-    st.write(f"**Total: {cart_currency()} {cart_total():,}**")
-    st.subheader("How would you like this served?")
-    service_option = st.radio("Service option", ["Room delivery", "Dine-in", "Pickup"], label_visibility="collapsed")
+
+    st.markdown(f"""
+        <div style="display:flex; justify-content:space-between; align-items:baseline;
+                    margin: 1.25rem 0 0.5rem; padding-top: 0.75rem;
+                    border-top: 2px solid #D4A24C;">
+            <span style="font-family:'Fraunces', serif; font-size:1.1rem; color:#2B1D14;">Total</span>
+            <span style="font-family:'Fraunces', serif; font-size:1.4rem; font-weight:600; color:#5C7A5E;">
+                {cart_currency()} {cart_total():,}
+            </span>
+        </div>
+    """, unsafe_allow_html=True)
+
+    st.markdown("<br>", unsafe_allow_html=True)
+
+    st.markdown("""<p class="vennie-hero-kicker" style="text-align:left;">How would you like this served?</p>""", unsafe_allow_html=True)
+    service_option = st.radio(
+        "Service option",
+        ["Room delivery", "Dine-in", "Pickup"],
+        label_visibility="collapsed",
+        horizontal=True,
+    )
+
     location_note = ""
     if service_option == "Room delivery":
-        location_note = st.text_input("Room number")
+        location_note = st.text_input("Room number", placeholder="e.g. Room 204")
     elif service_option == "Dine-in":
-        location_note = st.text_input("Table number (if known)")
+        location_note = st.text_input("Table number (if known)", placeholder="e.g. Table 5")
+
+    st.markdown("<br>", unsafe_allow_html=True)
+
     link = build_food_whatsapp_link(service_option, location_note)
     st.link_button("📲 Send order via WhatsApp", link, use_container_width=True,
                    disabled=(service_option == "Room delivery" and not location_note))
-    if st.button("Clear cart"):
+
+    if st.button("Clear tab"):
         st.session_state.cart = []
         st.rerun()
 
